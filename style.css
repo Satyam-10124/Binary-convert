@@ -1,0 +1,257 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background with Animated Circles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    background-size: 200% 200%; /* Larger gradient for animation */
+    animation: gradientWave 15s ease infinite; /* Gradient animation */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative; /* For absolutely positioned background elements */
+    overflow: hidden; /* Hide moving elements that are outside viewport */
+}
+
+/* Gradient Wave Animation */
+@keyframes gradientWave {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Moving Circles Animation */
+.background-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensure it doesn’t interfere with user interactions */
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+    animation: moveCircle 20s linear infinite, pulse 5s ease-in-out infinite; /* Added pulse effect */
+}
+
+/* Keyframes for Moving Circles */
+@keyframes moveCircle {
+    0% { transform: translate(-100px, -100px); } /* Start position outside the viewport */
+    100% { transform: translate(100vw, 100vh); } /* Move across the viewport */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.5); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Define different sizes and animations for multiple circles */
+.circle:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 10%; animation-duration: 20s; }
+.circle:nth-child(2) { width: 150px; height: 150px; top: 30%; left: 50%; animation-duration: 25s; animation-delay: 5s; }
+.circle:nth-child(3) { width: 120px; height: 120px; top: 60%; left: 70%; animation-duration: 30s; animation-delay: 10s; }
+.circle:nth-child(4) { width: 180px; height: 180px; top: 80%; left: 20%; animation-duration: 35s; animation-delay: 15s; }
+
+/* Confetti Animation */
+@keyframes confetti {
+    0% { transform: translateY(-100vh); }
+    100% { transform: translateY(100vh); }
+}
+
+.confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0.9;
+    border-radius: 50%;
+    animation: confetti 10s infinite;
+}
+
+.confetti div:nth-child(1) { background: #ff595e; left: 10%; animation-duration: 8s; }
+.confetti div:nth-child(2) { background: #ffca3a; left: 20%; animation-duration: 7s; }
+.confetti div:nth-child(3) { background: #8ac926; left: 30%; animation-duration: 6s; }
+.confetti div:nth-child(4) { background: #1982c4; left: 40%; animation-duration: 5s; }
+.confetti div:nth-child(5) { background: #6a4c93; left: 50%; animation-duration: 4s; }
+
+/* Particles Animation */
+@keyframes particles {
+    0% { transform: translateY(-50px); }
+    100% { transform: translateY(100vh); }
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particles div {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: particles 10s infinite;
+}
+
+.particles div:nth-child(1) { left: 10%; animation-duration: 12s; }
+.particles div:nth-child(2) { left: 20%; animation-duration: 15s; }
+.particles div:nth-child(3) { left: 30%; animation-duration: 18s; }
+.particles div:nth-child(4) { left: 40%; animation-duration: 20s; }
+.particles div:nth-child(5) { left: 50%; animation-duration: 25s; }
+
+/* Container */
+.container {
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative; /* For pseudo-elements */
+}
+
+/* Container Hover Effect */
+.container:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    z-index: -1;
+    animation: containerHover 1s ease-in-out;
+}
+
+@keyframes containerHover {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Heading with Enhanced Visibility */
+h1 {
+    font-size: 31px; /* Larger font size for better visibility */
+    color: #0072ff;/* Black text color */
+    text-shadow: 
+        1px 1px 2px rgba(255, 255, 255, 0.7), /* Light shadow for better contrast */
+        0 0 25px rgba(0, 0, 0, 0.4); /* Glow effect for emphasis */
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: bold; /* Bold text for prominence */
+    z-index: 1; /* Ensure heading is above other elements */
+    background: rgba(255, 255, 255, 0.7); /* Light background to improve readability */
+    padding: 10px; /* Padding to make background area larger */
+    border-radius: 8px; /* Rounded corners for the background */
+}
+
+/* Form */
+form {
+    margin-bottom: 20px;
+}
+
+/* Label */
+label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Input Field Hover Effect */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #0072ff;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    outline: none;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+input:hover {
+    border-color: #00c6ff;
+    background-color: #f0f8ff; /* Light blue background on hover */
+}
+
+input:focus {
+    border-color: #00c6ff;
+    box-shadow: 0 0 8px rgba(0, 198, 255, 0.5); /* Glow effect */
+    background-color: #e6f7ff; /* Lighter blue background on focus */
+}
+
+/* 3D Button Effect */
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0072ff;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative; /* For pseudo-elements */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transform: translateY(4px);
+    transition: transform 0.3s;
+    z-index: -1;
+}
+
+button:hover::before {
+    transform: translateY(0);
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Result */
+.result {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
